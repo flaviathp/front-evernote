@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Field, Control, Input, Column, Label, Help } from 'rbx';
 import { Navigate } from 'react-router-dom';
+import UsersService from '../../../services/users';
 
 function RegisterForm() {
     const [name, setName] = useState("");
@@ -13,10 +14,26 @@ function RegisterForm() {
         return <Navigate replace to="/login" />
     }
 
+    // método para o submit, envia os dados para a API
+    const HandleSubmit = async (evt) => {
+        // impede que a ação padrão do evento aconteça, por exemplo, clicar em enviar impede que envie o formulário
+        evt.preventDefault();
+        
+        try {
+            // recebe os valores de name, email e password e envia para a API
+            const user = await UsersService.register({ name: name, email: email, password: password });
+            // se der certo redireciona para o login
+            setRedirectToLogin(true);
+        } catch (error) {
+            // se der errado retorna o erro
+            setError(true);
+        }
+    };
+
     return (
         <>
             <Column.Group centered>
-                <form>
+                <form onSubmit={HandleSubmit}>
                     <Column size={12}>
                         <Field>
                             <Label size="small">Name:</Label>
