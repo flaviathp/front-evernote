@@ -2,7 +2,7 @@ import React from 'react';
 import { Column, Section, Title, Container, Card } from 'rbx';
 import '../../../style/users.scss';
 import HeaderLogged from '../../../components/headerLogged';
-
+import UsersEditForm from '../../../components/users/usersEditForm';
 
 const UserEdit = () => {
     return (
@@ -18,7 +18,7 @@ const UserEdit = () => {
                             </Title>
                             <Card>
                                 <Card.Content>
-                                    Users Edit Form...
+                                    <UsersEditForm />
                                 </Card.Content>
                             </Card>
                         </Column>
