@@ -1,5 +1,5 @@
 import React from 'react';
-import { Column, Tag, Title, List } from 'rbx';
+import { Button, Column, Tag, Title, List } from 'rbx';
 import Moment from 'moment';
 
 // replace remove as tags html
@@ -13,6 +13,11 @@ function ListNotes(props) {
                     <Title size={6}>
                         {props.notes.length} Notes
                     </Title>
+                </Column>
+                <Column size={2}>
+                    <Button state="active" color="custom-purple" outlined size="small" onClick={() => props.createNote()}>
+                        Notes +
+                    </Button>
                 </Column>
             </Column.Group>
 

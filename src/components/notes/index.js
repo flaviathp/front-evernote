@@ -10,7 +10,7 @@ const Notes = (props) => {
     const [notes, setNotes] = useState([]);
     const [current_note, setCurrentNote] = useState({ title: "", body: "", id: "" });
 
-    
+
     async function fetchNotes() {
         // busca as notas na API
         const response = await NotesService.index();
@@ -22,7 +22,7 @@ const Notes = (props) => {
             setCurrentNote(response.data[0])
         }
     }
-    
+
     // método do component list que seleciona as notas
     const selectNote = (id) => {
         const note = notes.find((note) => {
@@ -30,11 +30,18 @@ const Notes = (props) => {
         })
         setCurrentNote(note);
     };
-    
+
+    // criar novas notas
+    const createNote = async () => {
+        await NotesService.create();
+        // depois de criar a nota chama o método de listagem de notas, para atualizar 
+        fetchNotes();
+    }
+
     useEffect(() => {
         fetchNotes();
     }, []);
-    
+
     return (
         <>
             <Column.Group className="notes" id="notes">
@@ -55,6 +62,7 @@ const Notes = (props) => {
                     <List
                         notes={notes}
                         selectNote={selectNote}
+                        createNote={createNote}
                         current_note={current_note} />
                 </Menu>
 
