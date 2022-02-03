@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Field, Control, Input, Column, Label, Help } from 'rbx';
 import { Navigate } from 'react-router-dom';
-
+import UsersService from '../../../services/users';
 
 function LoginForm() {
     const [email, setEmail] = useState("");
@@ -16,11 +16,26 @@ function LoginForm() {
         return <Navigate replace to="/notes" />
     }
 
+    // método para o submit, envia os dados para a API
+    const HandleSubmit = async (evt) => {
+        // impede que a ação padrão do evento aconteça, por exemplo, clicar em enviar impede que envie o formulário
+        evt.preventDefault();
+        
+        try {
+            // recebe os valores de name, email e password e envia para a API
+            const user = await UsersService.login({ email: email, password: password });
+            // se der certo redireciona para o login
+            setRedirectToNotes(true);
+        } catch (error) {
+            // se der errado retorna o erro
+            setError(true);
+        }
+    };
 
     return (
         <>
             <Column.Group centered>
-                <form>
+                <form onSubmit={HandleSubmit}>
                     <Column size={12}>
                         <Field>
                             <Label size="small">Email:</Label>
