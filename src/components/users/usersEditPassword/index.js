@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Field, Control, Input, Column, Title, Help, Label } from 'rbx';
+import { Button, Field, Control, Input, Column, Help, Label } from 'rbx';
 import UsersService from '../../../services/users';
 
 function UsersEditFormPassword() {
