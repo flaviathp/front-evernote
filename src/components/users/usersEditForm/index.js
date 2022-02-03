@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Field, Control, Input, Column, Title, Help, Label } from 'rbx';
+import { Button, Field, Control, Input, Column, Help, Label } from 'rbx';
 import UsersService from '../../../services/users';
 
 function UsersEditForm() {
@@ -66,8 +66,8 @@ function UsersEditForm() {
                         </Column.Group>
                     </Control>
                 </Field>
-                {status == "error" && <Help color="danger">Problem in update</Help>}
-                {status == "success" && <Help color="primary">Updated with success</Help>}
+                {status === "error" && <Help color="danger">Problem in update</Help>}
+                {status === "success" && <Help color="primary">Updated with success</Help>}
             </form>
         </>
     )
