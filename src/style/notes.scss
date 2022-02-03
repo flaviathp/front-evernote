@@ -11,6 +11,15 @@
     padding-top: 10px;
 }
 
-.list-item.is-active{
+.list-item.is-active {
     background-color: $custom-grey-light;
+}
+
+.notes-editor {
+    padding: 0;
+    height: calc(100% - 43px);
+   
+    .quill {
+        height: 100%;
+    }
 }
