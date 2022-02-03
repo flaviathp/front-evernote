@@ -21,7 +21,7 @@ function RegisterForm() {
         
         try {
             // recebe os valores de name, email e password e envia para a API
-            const user = await UsersService.register({ name: name, email: email, password: password });
+            await UsersService.register({ name: name, email: email, password: password });
             // se der certo redireciona para o login
             setRedirectToLogin(true);
         } catch (error) {

@@ -23,7 +23,7 @@ function LoginForm() {
         
         try {
             // recebe os valores de name, email e password e envia para a API
-            const user = await UsersService.login({ email: email, password: password });
+            await UsersService.login({ email: email, password: password });
             // se der certo redireciona para o login
             setRedirectToNotes(true);
         } catch (error) {
