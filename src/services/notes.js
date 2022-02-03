@@ -6,7 +6,10 @@ const NotesService = {
         headers: { 'x-access-token': localStorage.getItem('token')}
     }),
     // permite ao usuário criar novas notas
-    create: () => Api.post('/notes', { 'title': 'Nova nota', 'body': 'Nova nota...' },{
+    create: () => Api.post('/notes', { 'title': 'Nova nota', 'body': 'Nova nota...' }, {
+        headers: { 'x-access-token': localStorage.getItem('token')}
+    }),
+    delete: (id) => Api.delete(`/notes/${id}`, {
         headers: { 'x-access-token': localStorage.getItem('token')}
     }),
 }

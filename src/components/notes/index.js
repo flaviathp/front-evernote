@@ -14,12 +14,14 @@ const Notes = (props) => {
     async function fetchNotes() {
         // busca as notas na API
         const response = await NotesService.index();
-        // verifica se tem mais de uma nota que corresponde a requisição
+        // verifica se tem uma nota que corresponde a requisição e retorna o resultado
         if (response.data.length >= 1) {
             // reverse mostra da nota mais nova para mais antiga
             setNotes(response.data.reverse())
             // coloca a nota mais nova em evidência
             setCurrentNote(response.data[0])
+        } else {
+            setNotes([]);
         }
     }
 
@@ -31,10 +33,16 @@ const Notes = (props) => {
         setCurrentNote(note);
     };
 
-    // criar novas notas
+    // criar novas notas pela interface
     const createNote = async () => {
         await NotesService.create();
         // depois de criar a nota chama o método de listagem de notas, para atualizar 
+        fetchNotes();
+    }
+
+    // deletando uma nota pela interface
+    const deleteNote = async (note) => {
+        await NotesService.delete(note._id);
         fetchNotes();
     }
 
@@ -63,6 +71,7 @@ const Notes = (props) => {
                         notes={notes}
                         selectNote={selectNote}
                         createNote={createNote}
+                        deleteNote={deleteNote}
                         current_note={current_note} />
                 </Menu>
 
