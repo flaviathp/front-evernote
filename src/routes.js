@@ -5,7 +5,7 @@ import Login from './pages/auth/login';
 import Register from './pages/auth/register';
 import NotesIndex from './pages/notes/index';
 import UserEdit from './pages/users/edit';
-import PrivateRoute from './components/auth/PrivateRoute';
+import PrivateRoute from './components/auth/privateRoute';
 
 const Router = () => (
     <>

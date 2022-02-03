@@ -8,6 +8,11 @@ const UsersService = {
         // salva um objeto no local storage e transforma em string
         localStorage.setItem('user', JSON.stringify(response.data.user));
         localStorage.setItem('token', response.data.token);
+    },
+    logout: () => {
+        // remove os dados salvos no local storage
+        localStorage.removeItem('user', null);
+        localStorage.removeItem('token', null);
     }
 }
 
