@@ -1,9 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import ReactQuill from 'react-quill'; 
-import 'react-quill/dist/quill.snow.css'; 
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 function Editor(props) {
     const [currentContent, setCurrentContent] = useState('');
+    // cria um timer para ver se o usuário parou de digitar
+    const [timer, setTimer] = useState(null)
+
+    // o início da nota é o título, selecionado através do slice
+    // regex que remove as tags html do texto
+    const updateNote = (content) => {
+        const title = content.replace(/(<([^>]+)>)/ig, "").slice(0, 30);
+        props.updateNote(props.note, { 'title': title, 'body': content })
+    }
+
+    // cria um método para salvamento automático a partir do timer
+    const handleChange = (content, delta, source) => {
+        clearTimeout(timer);
+        if (source === 'user') {
+            setCurrentContent(content)
+            setTimer(setTimeout(() => updateNote(content), 2000))
+        }
+    }
 
     useEffect(() => {
         setCurrentContent(props.note.body)
@@ -22,7 +40,7 @@ function Editor(props) {
     }
 
     return (
-        <ReactQuill value={currentContent} modules={modules} />
+        <ReactQuill value={currentContent} onChange={handleChange} modules={modules} />
     )
 }
 
