@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import HeaderLogged from '../../../components/headerLogged';
+import Notes from '../../../components/notes';
 
 const NotesIndex = () => {
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <>
-            <HeaderLogged />
-            
-            Hello World!
+            <HeaderLogged setIsOpen={setIsOpen} />
+            <Notes setIsOpen={setIsOpen} isOpen={isOpen} />
         </>
     )
 

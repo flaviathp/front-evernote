@@ -10,7 +10,7 @@ function RegisterForm() {
     const [redirectToLogin, setRedirectToLogin] = useState(false);
     const [error, setError] = useState(false);
 
-    if(redirectToLogin == true) {
+    if(redirectToLogin === true) {
         return <Navigate replace to="/login" />
     }
 

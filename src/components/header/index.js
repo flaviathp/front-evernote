@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Container, Column } from 'rbx';
-import LogoImage from '../../assets/images/logo.png';
+import logoImage from '../../assets/images/logo.png';
 import '../../style/header.scss';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ function Header() {
                 <Container>
                     <Navbar.Brand>
                         <Link to="/">
-                            <img src={LogoImage} />
+                            <img src={logoImage} alt="" />
                         </Link>
                         <Navbar.Burger
                             className="navbar-burger burger"

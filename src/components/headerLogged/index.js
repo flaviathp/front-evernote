@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Navbar, Container, Column, Dropdown, Button } from 'rbx';
-import LogoImage from '../../assets/images/logo-white.png';
+import { Navbar, Container, Dropdown, Button } from 'rbx';
+import logoImage from '../../assets/images/logo-white.png';
 import '../../style/header.scss';
 import { Link, Navigate } from 'react-router-dom';
 import UsersService from '../../services/users';
@@ -24,7 +24,7 @@ function HeaderLogged(props) {
                 <Container>
                     <Navbar.Brand>
                         <Link to="/">
-                            <img src={LogoImage} />
+                            <img src={logoImage} alt=""/>
                         </Link>
                         <Navbar.Burger
                             className="navbar-burger burger"
@@ -38,6 +38,18 @@ function HeaderLogged(props) {
                     </Navbar.Brand>
 
                     <Navbar.Menu id="navbar-menu">
+                        <Navbar.Segment as="div" className="navbar-item navbar-start" align="start">
+                            <Navbar.Item as="div">
+                                <Button
+                                    className="open-button"
+                                    color="white"
+                                    outlined
+                                    onClick={() => props.setIsOpen(true)}>
+                                    <FontAwesomeIcon icon={faList} />
+                                </Button>
+                            </Navbar.Item>
+                        </Navbar.Segment>
+
                         <Navbar.Segment as="div" className="navbar-item navbar-end" align="right">
                             <Navbar.Item as="div">
                                 <Dropdown>
@@ -53,7 +65,7 @@ function HeaderLogged(props) {
                                             </Dropdown.Item>
                                             <Dropdown.Divider />
                                             <Dropdown.Item as="div">
-                                                <a href="#" onClick={e => logOut() }>LogOut</a>
+                                                <a href="#" onClick={e => logOut()}>LogOut</a>
                                             </Dropdown.Item>
                                         </Dropdown.Content>
                                     </Dropdown.Menu>

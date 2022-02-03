@@ -21,7 +21,7 @@ const Register = () => {
                                     <Section>
                                         <Column.Group centered>
                                             <Column size={12}>
-                                                <img src={logoImage} />
+                                                <img src={logoImage} alt=""/>
                                             </Column>
                                         </Column.Group>
 
