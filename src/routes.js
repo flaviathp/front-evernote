@@ -5,6 +5,7 @@ import Login from './pages/auth/login';
 import Register from './pages/auth/register';
 import NotesIndex from './pages/notes/index';
 import UserEdit from './pages/users/edit';
+import PrivateRoute from './components/auth/PrivateRoute';
 
 const Router = () => (
     <>
@@ -13,7 +14,7 @@ const Router = () => (
                 <Route exact path='/' element={<Home/>} />
                 <Route exact path='/login' element={<Login/>} />
                 <Route exact path='/register' element={<Register/>} />
-                <Route exact path='/notes' element={<NotesIndex/>} />
+                <Route exact path='/notes' element= {<PrivateRoute> <NotesIndex/> </PrivateRoute>}/>
                 <Route exact path='/user/edit' element={<UserEdit/>} />
             </Routes>
         </BrowserRouter>
